@@ -1,8 +1,8 @@
-on {
+.on {
     background-color: green;
 
 }
 
-off {
+.off {
     background-color: red;
 }
