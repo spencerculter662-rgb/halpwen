@@ -6,3 +6,8 @@
 .off {
     background-color: red;
 }
+
+.light_card {
+    display: flex;
+    border: 10px;
+}

@@ -8,6 +8,7 @@ const app = express();
 
 const path =require("path");
 const port2 = 3020;
+const return_port = 3030;
 
 
 app.use(express.json());
@@ -21,10 +22,17 @@ app.post('/data', (req, res) => {
 app.post('/api/endpoint', (req, res) => {
   const clientData = req.body;
   console.log("Received from client:", clientData);
+
+  if (clientData.power === "on") {
+    console.log("this is a test data");
+  }
+
   
-  // Send a reply back to the client script
+
   res.json({ status: "Success", received: clientData });
 });
+
+
 
 //give the cliant the html server
 
@@ -36,4 +44,6 @@ app.listen(port2, () => {
     console.log(`Server is running at http://localhost:${port2}`);
 });
 
+
+// the conecshin for the python server that is runing the controer inputs 
 app.listen(3000, () => console.log('Node.js server running on port 3000'));
