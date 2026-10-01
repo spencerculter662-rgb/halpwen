@@ -1,7 +1,14 @@
 //this is the front end controller for the web app
 
+//the varibals for the power managment
+
 const on = document.getElementById("main_p_on");
 const off = document.getElementById("main_p_off");
+
+//configering the varibuls for the x32
+
+
+// the varibals for all of the lights
 
 const black_o = document.getElementById("black");
 const master = document.getElementById("master");
@@ -36,6 +43,7 @@ const bar2g_n = document.getElementById("bar2g_num");
 const bar2b_n = document.getElementById("bar2b_num");
 
 
+//the funcshin for sending the data to the node js server
 
 async function return_dat(can,dat) {
     const datasend = {
@@ -82,6 +90,7 @@ function master_() {
 on.addEventListener("click", power_on);
 off.addEventListener("click", power_off);
 black_o.addEventListener("click", black);
+
 master.addEventListener("click",(Event) => {
     const dat1 = Event.target.value;
     mast_num.textContent = Event.target.value;

@@ -19,19 +19,24 @@ app.post('/data', (req, res) => {
     res.json({ status: 'success', message: 'conectid' });
 });
 
-app.post('/api/endpoint', (req, res) => {
-  const clientData = req.body;
-  console.log("Received from client:", clientData);
+app.post('/api/endpoint', async (req, res) => {
+  try {
+    const pythonResponse = await fetch('http://127.0.0.1:3040/data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
 
-  if (clientData.power === "on") {
-    console.log("this is a test data");
+    if (!pythonResponse.ok) {
+      return res.status(502).json({ error: 'Python receiver failed' });
+    }
+
+    res.json({ status: 'forwarded', received: await pythonResponse.json() });
+  } catch (error) {
+    console.error('Could not reach Python:', error);
+    res.status(502).json({ error: 'Python server is not running' });
   }
-
-  
-
-  res.json({ status: "Success", received: clientData });
 });
-
 
 
 //give the cliant the html server
@@ -45,5 +50,3 @@ app.listen(port2, () => {
 });
 
 
-// the conecshin for the python server that is runing the controer inputs 
-app.listen(3000, () => console.log('Node.js server running on port 3000'));

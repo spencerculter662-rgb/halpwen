@@ -1,0 +1,31 @@
+this is the list of all of the dmx chanle for the final design
+
+1   |relay 1   |
+2   |relay 2   |
+3   |relay 3   |
+4   |relay 4   |
+5   |relay 5   |
+6   |relay 6   |
+7   |relay 7   |
+8   |relay 8   |
+9   |p1_red    |
+10  |p1_green  |
+11  |p1_blue   |
+12  ||
+13  ||
+14  ||
+15  ||
+17  ||
+18  ||
+19  ||
+20  ||
+21  ||
+22  ||
+23  ||
+24  ||
+25  ||
+26  ||
+27  ||
+28  ||
+29  ||
+30  ||
