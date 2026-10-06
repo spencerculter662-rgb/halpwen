@@ -5,7 +5,7 @@
 const on = document.getElementById("main_p_on");
 const off = document.getElementById("main_p_off");
 
-//configering the varibuls for the x32
+
 
 
 // the varibals for all of the lights
@@ -13,6 +13,22 @@ const off = document.getElementById("main_p_off");
 const black_o = document.getElementById("black");
 const master = document.getElementById("master");
 const mast_num = document.getElementById("master_num");
+
+
+const relay_1 = document.getElementById("rl_1");
+const relay_2 = document.getElementById("rl_2");
+const relay_3 = document.getElementById("rl_3");
+const relay_4 = document.getElementById("rl_4");
+const relay_5 = document.getElementById("rl_5");
+const relay_6 = document.getElementById("rl_6");
+const relay_7 = document.getElementById("rl_7");
+const relay_8 = document.getElementById("rl_8");
+const relay_9 = document.getElementById("rl_9");
+const relay_10 = document.getElementById("rl_10");
+
+let sw = 0
+
+
 
 const par1_red = document.getElementById("par1_red");
 const par1_green = document.getElementById("par1_green");
@@ -83,13 +99,214 @@ function black() {
     return_dat("black","swich")
 }
 
-function master_() {
-    return_dat("master","")
-}
 
 on.addEventListener("click", power_on);
 off.addEventListener("click", power_off);
 black_o.addEventListener("click", black);
+
+//the relays derect managment
+
+function relay1_() {
+    sw = 1;
+    return_dat("relay1","swich");
+    if (sw = 1) {
+        if (relay_1.style.backgroundColor = "green" ) {
+            relay_1.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_1.style.backgroundColor = "red" ) {
+            relay_1.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay2_() {
+    sw = 1;
+    return_dat("relay2","swich");
+    if (sw = 1) {
+        if (relay_2.style.backgroundColor = "green" ) {
+            relay_2.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_1.style.backgroundColor = "red" ) {
+            relay_1.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay3_() {
+    sw = 1;
+    return_dat("relay3","swich");
+    if (sw = 1) {
+        if (relay_3.style.backgroundColor = "green" ) {
+            relay_3.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_3.style.backgroundColor = "red" ) {
+            relay_3.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay4_() {
+    sw = 1;
+    return_dat("relay4","swich");
+    if (sw = 1) {
+        if (relay_4.style.backgroundColor = "green" ) {
+            relay_4.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_4.style.backgroundColor = "red" ) {
+            relay_4.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay5_() {
+    sw = 1;
+    return_dat("relay5","swich");
+    if (sw = 1) {
+        if (relay_5.style.backgroundColor = "green" ) {
+            relay_5.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_5.style.backgroundColor = "red" ) {
+            relay_5.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay6_() {
+    sw = 1;
+    return_dat("relay6","swich");
+    if (sw = 1) {
+        if (relay_6.style.backgroundColor = "green" ) {
+            relay_6.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_6.style.backgroundColor = "red" ) {
+            relay_6.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay7_() {
+    sw = 1;
+    return_dat("relay7","swich");
+    if (sw = 1) {
+        if (relay_7.style.backgroundColor = "green" ) {
+            relay_7.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_7.style.backgroundColor = "red" ) {
+            relay_7.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay8_() {
+    sw = 1;
+    return_dat("relay8","swich");
+    if (sw = 1) {
+        if (relay_8.style.backgroundColor = "green" ) {
+            relay_8.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_8.style.backgroundColor = "red" ) {
+            relay_8.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay9_() {
+    sw = 1;
+    return_dat("relay9","swich");
+    if (sw = 1) {
+        if (relay_9.style.backgroundColor = "green" ) {
+            relay_9.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_9.style.backgroundColor = "red" ) {
+            relay_9.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+function relay10_() {
+    sw = 1;
+    return_dat("relay10","swich");
+    if (sw = 1) {
+        if (relay_10.style.backgroundColor = "green" ) {
+            relay_10.style.backgroundColor = "red";
+            console.log("1");
+            sw = 0;
+        }
+    }
+    if (sw = 1) {
+        if (relay_10.style.backgroundColor = "red" ) {
+            relay_10.style.backgroundColor = "green";
+            console.log("2");
+             sw = 0;
+        }
+    }
+}
+
+relay_1.addEventListener("click", relay1_)
+relay_2.addEventListener("click", relay2_)
+relay_3.addEventListener("click", relay3_)
+relay_4.addEventListener("click", relay4_)
+relay_5.addEventListener("click", relay5_)
+relay_6.addEventListener("click", relay6_)
+relay_7.addEventListener("click", relay7_)
+relay_8.addEventListener("click", relay8_)
+relay_9.addEventListener("click", relay9_)
+relay_10.addEventListener("click", relay10_)
+
 
 master.addEventListener("click",(Event) => {
     const dat1 = Event.target.value;

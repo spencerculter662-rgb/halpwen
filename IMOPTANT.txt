@@ -1,0 +1,7 @@
+this is jest a note about this versin of the script
+
+most of the html is done 
+
+ther is still not a fucshin to sncronise the inf from the python back end
+
+and the python is tested to the point of the dmx not conected err

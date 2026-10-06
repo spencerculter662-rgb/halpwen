@@ -6,6 +6,7 @@
 const express = require('express');
 const app = express();
 
+const os = require('os');
 const path =require("path");
 const port2 = 3020;
 const return_port = 3030;
@@ -45,8 +46,15 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'main.html'));
 });
 
-app.listen(port2, () => {
+app.listen(port2, '0.0.0.0', () => {
     console.log(`Server is running at http://localhost:${port2}`);
+  for (const addresses of Object.values(os.networkInterfaces())) {
+    for (const address of addresses ?? []) {
+      if (address.family === 'IPv4' && !address.internal) {
+        console.log(`Open on your home network: http://${address.address}:${port2}`);
+      }
+    }
+  }
 });
 
 
