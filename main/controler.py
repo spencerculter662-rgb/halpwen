@@ -36,42 +36,91 @@ except Exception as error:
 class relays:
     def __init__(self):
         #start the relay manager
-
+  
         #configer all of the relay outputs
         self.relay_1 = dmx.add_fixture(Dimmer, name="rl1",start_channel=1)
+        self.rl1 = 0
         self.relay_2 = dmx.add_fixture(Dimmer, name="rl2",start_channel=2)
+        self.rl2 = 0
         self.relay_3 = dmx.add_fixture(Dimmer, name="rl3",start_channel=3)
+        self.rl3 = 0
         self.relay_4 = dmx.add_fixture(Dimmer, name="rl4",start_channel=4)
+        self.rl4 = 0
         self.relay_5 = dmx.add_fixture(Dimmer, name="rl5",start_channel=5)
+        self.rl5 = 0
         self.relay_6 = dmx.add_fixture(Dimmer, name="rl6",start_channel=6)
+        self.rl6 = 0
         self.relay_7 = dmx.add_fixture(Dimmer, name="rl7",start_channel=7)
+        self.rl7 = 0
         self.relay_8 = dmx.add_fixture(Dimmer, name="rl8",start_channel=8)
+        self.rl8 = 0
         self.relay_9 = dmx.add_fixture(Dimmer, name="rl9",start_channel=9)
+        self.rl9 = 0
         self.relay_10 = dmx.add_fixture(Dimmer, name="rl10",start_channel=10)
+        self.rl10 = 0
+        
 
     def set(self,relay ,value ,time):
         if relay == 1:
             self.relay_1.dim(value,time)
-        if relay == 1:
-            self.relay_1.dim(value,time)
+            if value < 127:
+                self.rl1 = 0
+            if value > 127:
+                self.rl1 = 1
         if relay == 2:
             self.relay_2.dim(value,time)
+            if value < 127:
+                self.rl2 = 0
+            if value > 127:
+                self.rl2 = 1
         if relay == 3:
             self.relay_3.dim(value,time)
+            if value < 127:
+                self.rl3 = 0
+            if value > 127:
+                self.rl3 = 1
         if relay == 4:
             self.relay_4.dim(value,time)
+            if value < 127:
+                self.rl4 = 0
+            if value > 127:
+                self.rl4 = 1
         if relay == 5:
             self.relay_5.dim(value,time)
+            if value < 127:
+                self.rl5 = 0
+            if value > 127:
+                self.rl5 = 1
         if relay == 6:
             self.relay_6.dim(value,time)
+            if value < 127:
+                self.rl6 = 0
+            if value > 127:
+                self.rl6 = 1
         if relay == 7:
             self.relay_7.dim(value,time)
+            if value < 127:
+                self.rl7 = 0
+            if value > 127:
+                self.rl7 = 1
         if relay == 8:
             self.relay_8.dim(value,time)
+            if value < 127:
+                self.rl8 = 0
+            if value > 127:
+                self.rl8 = 1
         if relay == 9:
             self.relay_9.dim(value,time)
+            if value < 127:
+                self.rl9 = 0
+            if value > 127:
+                self.rl9 = 1
         if relay == 10:
             self.relay_10.dim(value,time)
+            if value < 127:
+                self.rl10 = 0
+            if value > 127:
+                self.rl10 = 1
 
 class rgb_light():
     def __init__(self,kind,s_chan):
@@ -81,6 +130,9 @@ class rgb_light():
             self.red = dmx.add_fixture(Dimmer, name="idk",start_channel= s_chan + 0)
             self.green = dmx.add_fixture(Dimmer, name="idk",start_channel= s_chan + 1)
             self.blue = dmx.add_fixture(Dimmer, name="idk",start_channel= s_chan + 2)
+            self.lir = 0
+            self.lig = 0
+            self.lib = 0
 
         if kind == "bar":
             self.man = dmx.add_fixture(Dimmer, name="idk",start_channel= s_chan)
@@ -112,6 +164,8 @@ bar2 = rgb_light("bar",21)
 
 # ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh all of the varibals
 black_out = 0
+
+
 
 
 class DataHandler(BaseHTTPRequestHandler):
@@ -275,12 +329,9 @@ class DataHandler(BaseHTTPRequestHandler):
             bar2.man.dim(216,500)
             bar2.dim_("blue",dat,500)
 
-            
 
-                
-
-        
-
+        if can == "pull":
+            print("sending all states")
 
 
         response = json.dumps({"status": "ok"}).encode()
