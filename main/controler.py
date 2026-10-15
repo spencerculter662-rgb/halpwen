@@ -1,4 +1,4 @@
-#this is the python sub server that handles the output
+#this is the python sub server that handles the output over dmx
 print("boot")
 from time import sleep
 import json
@@ -6,6 +6,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from PyDMXControl.controllers import OpenDMXController
 from PyDMXControl.profiles.Generic import Dimmer
+#not needed but ther is a chanes that removing it will lead to a err
 from flask import Flask
 import time
 
@@ -28,7 +29,6 @@ try:
 except Exception as error:
     py_dmx_stat = red + "faild"
     print(f"DMX startup error: {error!r}")
-    print("you are fucked")
     exit("ther is no dmx adapter conected")
 
 
@@ -141,16 +141,26 @@ class rgb_light():
             self.green = dmx.add_fixture(Dimmer, name="idk",start_channel= s_chan + 2)
             self.blue = dmx.add_fixture(Dimmer, name="idk",start_channel= s_chan + 3)
 
-    def dim_(self,color,value,time):
+        self.red_ = 0
+        self.green_ = 0
+        self.blue_ = 0
+
+    def dim_(self,color,value,time,sd):
         #this is to make it so ther is not a problum with the bar losing it furst data tha is neded for it to work
 
 
         if color == "red":
             self.red.dim(int(value), time)
+            if sd == 0:
+                self.red_ = int(value)
         elif color == "green":
             self.green.dim(int(value), time)
+            if sd == 0:
+                self.green_ = int(value)
         elif color == "blue":
             self.blue.dim(int(value), time)
+            if sd == 0:
+                self.blue_ = int(value)
         
 
 
@@ -163,13 +173,15 @@ bar1 = rgb_light("bar",17)
 bar2 = rgb_light("bar",21)
 
 # ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh all of the varibals
-black_out = 0
+black_out2 = 0
 
 
 
 
 class DataHandler(BaseHTTPRequestHandler):
     def do_POST(self):
+        global black_out2
+
         if self.path != "/data":
             self.send_error(404)
             return
@@ -215,7 +227,7 @@ class DataHandler(BaseHTTPRequestHandler):
         if can == "black" and dat == "swich":
             sw = 1
             if sw == 1:
-                if black_out == 0:
+                if black_out2 == 0:
                     #relay.set(1,0,50)
                     #relay.set(2,0,50)
                     #relay.set(3,0,50)
@@ -227,28 +239,28 @@ class DataHandler(BaseHTTPRequestHandler):
                     #relay.set(9,0,50)
                     relay.set(10,0,50)
 
-                    par1.dim_("red",0,50)
-                    par1.dim_("green",0,50)
-                    par1.dim_("blue",0,50)
+                    par1.dim_("red",0,50,1)
+                    par1.dim_("green",0,50,1)
+                    par1.dim_("blue",0,50,1)
 
-                    par2.dim_("red",0,50)
-                    par2.dim_("green",0,50)
-                    par2.dim_("blue",0,50)
+                    par2.dim_("red",0,50,1)
+                    par2.dim_("green",0,50,1)
+                    par2.dim_("blue",0,50,1)
 
-                    bar1.dim_("red",0,50)
-                    bar1.dim_("green",0,50)
-                    bar1.dim_("blue",0,50)
+                    bar1.dim_("red",0,50,1)
+                    bar1.dim_("green",0,50,1)
+                    bar1.dim_("blue",0,50,1)
                     
-                    bar2.dim_("red",0,50)
-                    bar2.dim_("green",0,50)
-                    bar2.dim_("blue",0,50)
-                    if sw == 1:
-                        black_out = 1
-                        sw = 0
+                    bar2.dim_("red",0,50,1)
+                    bar2.dim_("green",0,50,1)
+                    bar2.dim_("blue",0,50,1)
+                    black_out2 = 1
+                    sw = 0
 
             if sw == 1:
-                if black_out == 1:
-                    #relay.set(1,255,50)
+                if black_out2 == 1:
+                    print("is the thing working")
+                   #relay.set(1,255,50)
                     #relay.set(2,255,50)
                     #relay.set(3,255,50)
                     #relay.set(4,255,50)
@@ -259,79 +271,104 @@ class DataHandler(BaseHTTPRequestHandler):
                     #relay.set(9,255,50)
                     relay.set(10,255,50)
 
-                    par1.dim_("red",255,50)
-                    par1.dim_("green",255,50)
-                    par1.dim_("blue",255,50)
+                    par1.dim_("red",par1.red_,50,1)
+                    par1.dim_("green",par1.green_,50,1)
+                    par1.dim_("blue",par1.blue_,50,1)
                     
-                    par2.dim_("red",255,50)
-                    par2.dim_("green",255,50)
-                    par2.dim_("blue",255,50)
+                    par2.dim_("red",par2.red_,50,1)
+                    par2.dim_("green",par2.green_,50,1)
+                    par2.dim_("blue",par2.blue_,50,1)
                     
-                    bar1.dim_("red",255,50)
-                    bar1.dim_("green",255,50)
-                    bar1.dim_("blue",255,50)
-                                        
-                    bar2.dim_("red",255,50)
-                    bar2.dim_("green",255,50)
-                    bar2.dim_("blue",255,50)
+                    bar1.dim_("red",bar1.red_,50,1)
+                    bar1.dim_("green",bar1.green_,50,1)
+                    bar1.dim_("blue",bar1.blue_,50,1)
+                         
+                    bar2.dim_("red",int(bar2.red_),50,1)
+                    bar2.dim_("green",bar2.green_,50,1)
+                    bar2.dim_("blue",bar2.blue_,50,1)
 
                     sw = 0
-                    black_out = 0
+                    black_out2 = 0
 
         if can == "master":
             print("this dus not work becas i do not want to figer this out")
 
 
         if can == "par1_red":
-            par1.dim_("red",dat,500)
+            par1.dim_("red",dat,500,0)
 
         if can == "par1_green":
-            par1.dim_("green",dat,500)
+            par1.dim_("green",dat,500,0)
 
         if can == "par1_blue":
-            par1.dim_("blue",dat,500)
+            par1.dim_("blue",dat,500,0)
 
 
         if can == "par2_red":
-            par2.dim_("red",dat,500)
+            par2.dim_("red",dat,500,0)
         
         if can == "par2_green":
-            par2.dim_("green",dat,500)
+            par2.dim_("green",dat,500,0)
         
         if can == "par2_blue":
-            par2.dim_("blue",dat,500)
+            par2.dim_("blue",dat,500,0)
 
 #///////////////////////////////////////////////////////////////////////
 
         if can == "bar1_red":
             bar1.man.dim(216,500)
-            bar1.dim_("red",dat,500)
+            bar1.dim_("red",dat,500,0)
         
         if can == "bar1_green":
             bar1.man.dim(216,500)
-            bar1.dim_("green",dat,500)
+            bar1.dim_("green",dat,500,0)
         
         if can == "bar1_blue":
             bar1.man.dim(216,500)
-            bar1.dim_("blue",dat,500)
+            bar1.dim_("blue",dat,500,0)
         
         
         if can == "bar2_red":
             bar2.man.dim(216,500)
-            bar2.dim_("red",dat,500)
+            bar2.dim_("red",dat,500,0)
             
                 
         if can == "bar2_green":
             bar2.man.dim(216,500)
-            bar2.dim_("green",dat,500)
+            bar2.dim_("green",dat,500,0)
                 
         if can == "bar2_blue":
             bar2.man.dim(216,500)
-            bar2.dim_("blue",dat,500)
+            bar2.dim_("blue",dat,500,0)
 
 
         if can == "pull":
             print("sending all states")
+            #this creats a json formated varibal for updating the html fromt end with the actwal values
+            dataRespond = {"relays": "cc",
+                           "relay1": relays.rl1,
+                           "relay2": relays.rl2,
+                           "relay3": relays.rl3,
+                           "relay4": relays.rl4,
+                           "relay5": relays.rl5,
+                           "relay6": relays.rl6,
+                           "relay7": relays.rl7,
+                           "relay8": relays.rl8,
+                           "relay9": relays.rl9,
+                           "relay10": relays.rl10,
+
+                           "bl" : black_out2,
+
+                           "lights": "cc",
+
+                            "par1" : [par1.red_,par1.green_,par1.blue_],
+                            "par2" : [par2.red_,par2.green_,par2.blue_],
+
+                            "bar1" : [bar1.red_,bar1.green_,bar1.blue_],
+                            "bar2" : [bar2.red_,bar2.green_,bar2.blue_],
+                           
+                           }
+        
 
 
         response = json.dumps({"status": "ok"}).encode()

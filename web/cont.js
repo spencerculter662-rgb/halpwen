@@ -5,7 +5,7 @@
 const on = document.getElementById("main_p_on");
 const off = document.getElementById("main_p_off");
 
-
+const synk = document.getElementById("sy");
 
 
 // the varibals for all of the lights
@@ -99,6 +99,10 @@ function black() {
     return_dat("black","swich")
 }
 
+//sink all of the data from the pyton server
+function sy___() {
+    
+}
 
 on.addEventListener("click", power_on);
 off.addEventListener("click", power_off);
@@ -136,8 +140,8 @@ function relay2_() {
         }
     }
     if (sw = 1) {
-        if (relay_1.style.backgroundColor = "red" ) {
-            relay_1.style.backgroundColor = "green";
+        if (relay_2.style.backgroundColor = "red" ) {
+            relay_2.style.backgroundColor = "green";
             console.log("2");
              sw = 0;
         }
