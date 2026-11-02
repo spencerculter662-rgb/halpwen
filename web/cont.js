@@ -1,7 +1,7 @@
 //this is the front end controller for the web app
 
 //the varibals for the power managment
-
+//this is is i sis i sisi s sisiisisi si sis isis i is  a programmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm m m m m mm m m m m m m m m m m
 const on = document.getElementById("main_p_on");
 const off = document.getElementById("main_p_off");
 
@@ -14,22 +14,32 @@ const black_o = document.getElementById("black");
 const master = document.getElementById("master");
 const mast_num = document.getElementById("master_num");
 
-
+//set all of the varibuls
 const relay_1 = document.getElementById("rl_1");
+var relay1_color = window.getComputedStyle(relay_1).backgroundColor;
 const relay_2 = document.getElementById("rl_2");
+var relay2_color = window.getComputedStyle(relay_2).backgroundColor;
 const relay_3 = document.getElementById("rl_3");
+var relay3_color = window.getComputedStyle(relay_3).backgroundColor;
 const relay_4 = document.getElementById("rl_4");
+var relay4_color = window.getComputedStyle(relay_4).backgroundColor;
 const relay_5 = document.getElementById("rl_5");
+var relay5_color = window.getComputedStyle(relay_5).backgroundColor;
 const relay_6 = document.getElementById("rl_6");
+var relay6_color = window.getComputedStyle(relay_6).backgroundColor;
 const relay_7 = document.getElementById("rl_7");
+var relay7_color = window.getComputedStyle(relay_7).backgroundColor;
 const relay_8 = document.getElementById("rl_8");
+var relay8_color = window.getComputedStyle(relay_8).backgroundColor;
 const relay_9 = document.getElementById("rl_9");
+var relay9_color = window.getComputedStyle(relay_9).backgroundColor;
 const relay_10 = document.getElementById("rl_10");
+var relay10_color = window.getComputedStyle(relay_10).backgroundColor;
 
 let sw = 0
 
 
-
+// get all of the objects from the screen
 const par1_red = document.getElementById("par1_red");
 const par1_green = document.getElementById("par1_green");
 const par1_blue = document.getElementById("par1_blue");
@@ -101,7 +111,7 @@ function black() {
 
 //sink all of the data from the pyton server
 function sy___() {
-    
+    //this dus not egsist
 }
 
 on.addEventListener("click", power_on);
@@ -111,194 +121,138 @@ black_o.addEventListener("click", black);
 //the relays derect managment
 
 function relay1_() {
-    sw = 1;
+    relay1_color = window.getComputedStyle(relay_1).backgroundColor;
+    console.log(relay1_color);
+    //change the color for all of the butoms
+    if (relay1_color === "rgb(255, 0, 0)") {
+        relay_1.style.backgroundColor = "green";
+        
+    } else if (relay1_color === "rgb(0, 128, 0)") {
+        relay_1.style.backgroundColor = "red";
+    }
     return_dat("relay1","swich");
-    if (sw = 1) {
-        if (relay_1.style.backgroundColor = "green" ) {
-            relay_1.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_1.style.backgroundColor = "red" ) {
-            relay_1.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay2_() {
-    sw = 1;
+    relay2_color = window.getComputedStyle(relay_2).backgroundColor;
+    console.log(relay2_color);
+    //
+    if (relay2_color === "rgb(255, 0, 0)") {
+        relay_2.style.backgroundColor = "green";
+        
+    } else if (relay2_color === "rgb(0, 128, 0)") {
+        relay_2.style.backgroundColor = "red";
+    }
     return_dat("relay2","swich");
-    if (sw = 1) {
-        if (relay_2.style.backgroundColor = "green" ) {
-            relay_2.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_2.style.backgroundColor = "red" ) {
-            relay_2.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay3_() {
-    sw = 1;
+    relay3_color = window.getComputedStyle(relay_3).backgroundColor;
+    console.log(relay3_color);
+    //
+    if (relay3_color === "rgb(255, 0, 0)") {
+        relay_3.style.backgroundColor = "green";
+        
+    } else if (relay3_color === "rgb(0, 128, 0)") {
+        relay_3.style.backgroundColor = "red";
+    }
     return_dat("relay3","swich");
-    if (sw = 1) {
-        if (relay_3.style.backgroundColor = "green" ) {
-            relay_3.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_3.style.backgroundColor = "red" ) {
-            relay_3.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay4_() {
-    sw = 1;
+    relay4_color = window.getComputedStyle(relay_4).backgroundColor;
+    console.log(relay4_color);
+    //
+    if (relay4_color === "rgb(255, 0, 0)") {
+        relay_4.style.backgroundColor = "green";
+        
+    } else if (relay4_color === "rgb(0, 128, 0)") {
+        relay_4.style.backgroundColor = "red";
+    }
     return_dat("relay4","swich");
-    if (sw = 1) {
-        if (relay_4.style.backgroundColor = "green" ) {
-            relay_4.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_4.style.backgroundColor = "red" ) {
-            relay_4.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay5_() {
-    sw = 1;
+    relay5_color = window.getComputedStyle(relay_5).backgroundColor;
+    console.log(relay5_color);
+    //
+    if (relay5_color === "rgb(255, 0, 0)") {
+        relay_5.style.backgroundColor = "green";
+        
+    } else if (relay5_color === "rgb(0, 128, 0)") {
+        relay_5.style.backgroundColor = "red";
+    }
     return_dat("relay5","swich");
-    if (sw = 1) {
-        if (relay_5.style.backgroundColor = "green" ) {
-            relay_5.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_5.style.backgroundColor = "red" ) {
-            relay_5.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay6_() {
-    sw = 1;
+    relay6_color = window.getComputedStyle(relay_6).backgroundColor;
+    console.log(relay6_color);
+    //
+    if (relay6_color === "rgb(255, 0, 0)") {
+        relay_6.style.backgroundColor = "green";
+        
+    } else if (relay6_color === "rgb(0, 128, 0)") {
+        relay_6.style.backgroundColor = "red";
+    }
     return_dat("relay6","swich");
-    if (sw = 1) {
-        if (relay_6.style.backgroundColor = "green" ) {
-            relay_6.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_6.style.backgroundColor = "red" ) {
-            relay_6.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay7_() {
-    sw = 1;
+    relay7_color = window.getComputedStyle(relay_7).backgroundColor;
+    console.log(relay7_color);
+    //
+    if (relay7_color === "rgb(255, 0, 0)") {
+        relay_7.style.backgroundColor = "green";
+        
+    } else if (relay7_color === "rgb(0, 128, 0)") {
+        relay_7.style.backgroundColor = "red";
+    }
     return_dat("relay7","swich");
-    if (sw = 1) {
-        if (relay_7.style.backgroundColor = "green" ) {
-            relay_7.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_7.style.backgroundColor = "red" ) {
-            relay_7.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay8_() {
-    sw = 1;
+    relay8_color = window.getComputedStyle(relay_8).backgroundColor;
+    console.log(relay8_color);
+    //
+    if (relay8_color === "rgb(255, 0, 0)") {
+        relay_8.style.backgroundColor = "green";
+        
+    } else if (relay8_color === "rgb(0, 128, 0)") {
+        relay_8.style.backgroundColor = "red";
+    }
     return_dat("relay8","swich");
-    if (sw = 1) {
-        if (relay_8.style.backgroundColor = "green" ) {
-            relay_8.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_8.style.backgroundColor = "red" ) {
-            relay_8.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay9_() {
-    sw = 1;
+    relay9_color = window.getComputedStyle(relay_9).backgroundColor;
+    console.log(relay9_color);
+    //
+    if (relay9_color === "rgb(255, 0, 0)") {
+        relay_9.style.backgroundColor = "green";
+        
+    } else if (relay9_color === "rgb(0, 128, 0)") {
+        relay_9.style.backgroundColor = "red";
+    }
     return_dat("relay9","swich");
-    if (sw = 1) {
-        if (relay_9.style.backgroundColor = "green" ) {
-            relay_9.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_9.style.backgroundColor = "red" ) {
-            relay_9.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
 
 function relay10_() {
-    sw = 1;
+    relay10_color = window.getComputedStyle(relay_10).backgroundColor;
+    console.log(relay10_color);
+    //
+    if (relay10_color === "rgb(255, 0, 0)") {
+        relay_10.style.backgroundColor = "green";
+        
+    } else if (relay10_color === "rgb(0, 128, 0)") {
+        relay_10.style.backgroundColor = "red";
+    }
     return_dat("relay10","swich");
-    if (sw = 1) {
-        if (relay_10.style.backgroundColor = "green" ) {
-            relay_10.style.backgroundColor = "red";
-            console.log("1");
-            sw = 0;
-        }
-    }
-    if (sw = 1) {
-        if (relay_10.style.backgroundColor = "red" ) {
-            relay_10.style.backgroundColor = "green";
-            console.log("2");
-             sw = 0;
-        }
-    }
 }
+
+
+
+
 
 relay_1.addEventListener("click", relay1_)
 relay_2.addEventListener("click", relay2_)

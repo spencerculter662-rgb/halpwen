@@ -10,8 +10,7 @@ from PyDMXControl.profiles.Generic import Dimmer
 from flask import Flask
 import time
 
-
-#color
+#color for terminal
 red = '\033[31m'
 green = '\033[32m'
 blue =  '\033[34m'
@@ -222,7 +221,38 @@ class DataHandler(BaseHTTPRequestHandler):
             relay.set(9,0,50)
             relay.set(10,0,50)
 
-        
+
+
+        if can == "relay1" and dat=="swich":
+            relay.set(1, 0 if relay.rl1 else 255, 50)
+
+        if can == "relay2" and dat=="swich":
+            relay.set(2, 0 if relay.rl2 else 255, 50)
+
+        if can == "relay3" and dat=="swich":
+            relay.set(3, 0 if relay.rl3 else 255, 50)
+
+        if can == "relay4" and dat=="swich":
+            relay.set(4, 0 if relay.rl4 else 255, 50)
+
+        if can == "relay5" and dat=="swich":
+            relay.set(5, 0 if relay.rl5 else 255, 50)
+
+        if can == "relay6" and dat=="swich":
+            relay.set(6, 0 if relay.rl6 else 255, 50)
+
+        if can == "relay7" and dat=="swich":
+            relay.set(7, 0 if relay.rl7 else 255, 50)
+
+        if can == "relay8" and dat=="swich":
+            relay.set(8, 0 if relay.rl8 else 255, 50)
+
+        if can == "relay9" and dat=="swich":
+            relay.set(9, 0 if relay.rl9 else 255, 50)
+
+        if can == "relay10" and dat=="swich":
+            relay.set(10, 0 if relay.rl10 else 255, 50)
+
 
         if can == "black" and dat == "swich":
             sw = 1
@@ -346,16 +376,16 @@ class DataHandler(BaseHTTPRequestHandler):
             print("sending all states")
             #this creats a json formated varibal for updating the html fromt end with the actwal values
             dataRespond = {"relays": "cc",
-                           "relay1": relays.rl1,
-                           "relay2": relays.rl2,
-                           "relay3": relays.rl3,
-                           "relay4": relays.rl4,
-                           "relay5": relays.rl5,
-                           "relay6": relays.rl6,
-                           "relay7": relays.rl7,
-                           "relay8": relays.rl8,
-                           "relay9": relays.rl9,
-                           "relay10": relays.rl10,
+                           "relay1": relay.rl1,
+                           "relay2": relay.rl2,
+                           "relay3": relay.rl3,
+                           "relay4": relay.rl4,
+                           "relay5": relay.rl5,
+                           "relay6": relay.rl6,
+                           "relay7": relay.rl7,
+                           "relay8": relay.rl8,
+                           "relay9": relay.rl9,
+                           "relay10": relay.rl10,
 
                            "bl" : black_out2,
 
@@ -391,5 +421,3 @@ print(f"web:{web_stat}{R} dmx:{py_dmx_stat}{R}")
 server = ThreadingHTTPServer(("127.0.0.1", 3040), DataHandler)
 print("Python receiver listening on port 3040")
 server.serve_forever()
-
-

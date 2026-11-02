@@ -3,6 +3,8 @@
 // to start server
 // node web/scerver.js
 
+
+//this is a node js server that pasis the data from the htlm and js frount end to the python outputs.
 const express = require('express');
 const app = express();
 
